@@ -3,3 +3,7 @@ vendor/
 composer.lock
 
 
+
+test-api-rest-bundle\.sublime-project
+
+test-api-rest-bundle\.sublime-workspace

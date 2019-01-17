@@ -13,5 +13,8 @@ class TestApiRestExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(array(
             __DIR__ . '/../Resources/config/')));
         $loader->load('services.xml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $config);
     }
 }
