@@ -30,8 +30,8 @@ class JsonApiAsArrayTestCase extends AbstractBaseControllerTestClass
 
     public function genericTestAPICall(TestDataChunk $dataTest)
     {
-        $this->payloadsDir = $this->client->getKernel()->getContainer()->getParameter('directory_payloads');
-        $this->responsesDir = $this->client->getKernel()->getContainer()->getParameter('directory_responses');
+        $this->payloadsDir = $this->client->getKernel()->getContainer()->getParameter('test_api_rest.directory.payloads');
+        $this->responsesDir = $this->client->getKernel()->getContainer()->getParameter('test_api_rest.directory.responses');
         $this->current = $dataTest;
         if($dataTest->kind == TestDataChunk::KIND_SCENARIO)
         {
