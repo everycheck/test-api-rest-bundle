@@ -16,5 +16,9 @@ class TestApiRestExtension extends Extension
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $config);
+
+        $container->setParameter('test_api_rest.directory.payloads', $config['directory']['payloads']);
+        $container->setParameter('test_api_rest.directory.responses', $config['directory']['responses']);
+
     }
 }

@@ -71,8 +71,3 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool:     { type: memory }
-
-test_api_rest:
-    directory:
-        payloads: '%directory_payloads%'
-        responses: '%directory_responses%'

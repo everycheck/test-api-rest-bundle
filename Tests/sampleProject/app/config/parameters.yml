@@ -11,6 +11,3 @@ parameters:
     mailer_transport: null
     mailer_user: null
     mailer_password: null
-
-    directory_payloads: Payloads
-    directory_responses: Responses/Expected
