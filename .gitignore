@@ -1,3 +1,4 @@
 vendor/
 /.idea
 Tests/sampleProject/var/data/db_test/everycheckdb\.db3
+Tests/sampleProject/var/session/
