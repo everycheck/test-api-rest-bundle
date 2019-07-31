@@ -94,7 +94,7 @@ Here are the commands to execute in order to test the bundle :
 ```
 composer install
 
-./Tests/sampleProject/tests/app/console d:d:c
+./Tests/sampleProject/tests/app/console d:d:d --force
 ./Tests/sampleProject/tests/app/console d:d:c
 ./Tests/sampleProject/tests/app/console d:s:c
 ./Tests/sampleProject/tests/app/console s:start --docroot=./Tests/sampleProject/tests/public

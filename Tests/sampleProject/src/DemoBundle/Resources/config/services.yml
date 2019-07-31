@@ -1,4 +1,0 @@
-services:
-  demo.demo_api:
-    class: EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Service\Api
-    public: true
