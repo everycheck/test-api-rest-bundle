@@ -43,19 +43,5 @@
     },
     "config": {
         "sort-packages":true
-    },
-    "scripts": {
-        "fixtures-demo": [
-            "./Tests/sampleProject/app/console d:d:d --force",
-            "./Tests/sampleProject/app/console d:d:c",
-            "./Tests/sampleProject/app/console d:s:c",
-            "php ./Tests/sampleProject/tests/DemoBundle/DataFixtures/LoadDemoFixture.php 127.0.0.1:8001 1"
-        ],
-        "fixtures-pattern": [
-            "./Tests/sampleProject/app/console d:d:d --force",
-            "./Tests/sampleProject/app/console d:d:c",
-            "./Tests/sampleProject/app/console d:s:c",
-            "php ./Tests/sampleProject/tests/PatternBundle/DataFixtures/LoadPatternFixture.php 127.0.0.1:8001 1"
-        ]
     }
 }
