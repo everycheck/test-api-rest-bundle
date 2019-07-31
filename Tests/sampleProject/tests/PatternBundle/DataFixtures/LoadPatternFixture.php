@@ -20,7 +20,7 @@ class LoadPatternFixture
         $pattern = $this->createPattern();
 
         copy(__DIR__."/../../../var/data/db_test/everycheckdb.db3", __DIR__."/../../../var/data/db_test/LoadPatternFixture.sqlite");
-        file_put_contents(__DIR__."/env.json", json_encode($this->env));
+        file_put_contents(__DIR__."/env.json", json_encode($this->env, JSON_PRETTY_PRINT));
     }
 
     private function store($object, $prefix)

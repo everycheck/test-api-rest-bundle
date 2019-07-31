@@ -20,7 +20,7 @@ class LoadDemoFixture
         $demo = $this->createDemo();
 
         copy(__DIR__."/../../../var/data/db_test/everycheckdb.db3", __DIR__."/../../../var/data/db_test/LoadDemoFixture.sqlite");
-        file_put_contents(__DIR__."/env.json", json_encode($this->env));
+        file_put_contents(__DIR__."/env.json", json_encode($this->env, JSON_PRETTY_PRINT));
     }
 
     private function store($object, $prefix)

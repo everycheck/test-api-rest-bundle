@@ -68,6 +68,22 @@ class DemoController extends Controller
         return new Response($response, 201, ['Content-Type'=>"application/json"]);
     }
 
+
+    /**
+     * Creates a new demo entity via multipart form.
+     *
+     * @Route("/multipart", name="demo_multipart", methods={"POST"})
+     */
+    public function multipartAction(Request $request)
+    {
+        $encoders = array( new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $response = $serializer->serialize($request->request->all(), 'json');
+        return new Response($response, 201, ['Content-Type'=>"application/json"]);
+    }
+
     /**
      * Deletes a demo entity.
      *

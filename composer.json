@@ -55,8 +55,7 @@
             "./Tests/sampleProject/app/console d:d:d --force",
             "./Tests/sampleProject/app/console d:d:c",
             "./Tests/sampleProject/app/console d:s:c",
-            "php ./Tests/sampleProject/tests/PatternBundle/DataFixtures/LoadPatternFixture.php 127.0.0.1:8001 admin password 1",
-            "./Tests/sampleProject/app/console s:stop"
+            "php ./Tests/sampleProject/tests/PatternBundle/DataFixtures/LoadPatternFixture.php 127.0.0.1:8001 admin password 1"
         ]
     }
 }
