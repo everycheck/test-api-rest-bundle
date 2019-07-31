@@ -15,13 +15,13 @@ unit_tests:
 
   DELETE:
     - { url: "/demo/a"  , status: 404 }
-    - { url: "/demo/1"  , status: 204 }
+    - { url: "/demo/#demo_1#"  , status: 204 }
 
 scenario:
   creation_then_deletion:
     - { action: "DELETE", url: "/demo/3", status: 404}
     - { action: "POST"  , url: "/demo/new"  , status: 201, in: "postValidDemo" , out: "postedDemo"}
-    - { action: "DELETE", url: "/demo/3", status: 204 }
+    - { action: "DELETE", url: "/demo/#demo_3#", status: 204 }
 
   db_testing:
     - { action: "POST"  , url: "/demo/new"  , status: 201, in: "postValidDemo" , out: "postedDemo"}

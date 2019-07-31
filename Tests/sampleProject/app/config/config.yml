@@ -1,6 +1,8 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: ../../src/DemoBundle/Resources/config/services.yml }
     - { resource: ../../src/EmailBundle/Resources/config/services.yml }
+    - { resource: ../../src/PatternBundle/Resources/config/services.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -20,7 +22,6 @@ framework:
     #serializer:      { enable_annotations: true }]
     default_locale:  "%locale%"
     trusted_hosts:   ~
-    trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
@@ -71,3 +72,7 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool:     { type: memory }
+
+sensio_framework_extra:
+    router:
+        annotations: false

@@ -1,0 +1,4 @@
+services:
+  pattern.pattern_api:
+    class: EveryCheck\TestApiRestBundle\Tests\sampleProject\src\PatternBundle\Service\Api
+    public: true
