@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\WebServerBundle\WebServerBundle(),
             new Sensio\Bundle\DistributionBundle\SensioDistributionBundle(),
             new EveryCheck\TestApiRestBundle\TestApiRestBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle()
         ];
     }
