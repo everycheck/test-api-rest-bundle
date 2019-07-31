@@ -15,7 +15,7 @@ class LoadPatternFixture
     {
         $this->logCount = 1;
 
-        $this->patternApi = new PatternApi($param['url'],$param['login'],$param['password'],$param['debug']);
+        $this->patternApi = new PatternApi($param['url'],$param['debug']);
 
         $pattern = $this->createPattern();
 
@@ -54,15 +54,13 @@ class LoadPatternFixture
 
 try
 {
-	if(count($argv) < 4)
+	if(count($argv) < 1)
 	{
-		throw new \Exception("Usage : \n command url login password nb_to_generate [debug]");
+		throw new \Exception("Usage : \n command url [debug]");
 	}
 	$arguments = [
 		"url"    => $argv[1],
-		"login"    => $argv[2],
-		"password" => $argv[3],
-		"debug"  => $argv[4],
+		"debug"  => $argv[2],
 	];
 
 	$test = new LoadPatternFixture();

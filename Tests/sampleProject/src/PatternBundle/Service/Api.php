@@ -6,12 +6,9 @@ use GuzzleHttp\Client;
 
 class Api{
 
-	public function __construct($url,$login,$password,$debug)
+	public function __construct($url,$debug)
 	{
-		$this->login    = $login;
-		$this->password = $password;
 		$this->debug    = $debug;
-		$this->token    = '';
 
 		$this->guzzleClient = new Client([
 			"base_uri" => $url,
@@ -53,7 +50,6 @@ class Api{
 			"debug" => $this->debug?fopen($this->debug,'w'):false,
 			"headers" => [
 				'Content-Type' => $json  ? 'application/json' : 'application/octet-stream',
-				"X-Auth-Token" => $this->token,
 				"X-File-Name" => $filename
 			]			
 		];
