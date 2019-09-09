@@ -5,9 +5,9 @@ namespace EveryCheck\TestApiRestBundle\EventSubscriber;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Query\ResultSetMapping;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Doctrine\Common\EventSubscriber;
 
-class ForeignKeyEnabler implements EventSubscriberInterface
+class ForeignKeyEnabler implements EventSubscriber
 {
     public function __construct(EntityManagerInterface $em, string $databaseUrl)
     {
@@ -15,7 +15,7 @@ class ForeignKeyEnabler implements EventSubscriberInterface
         $this->databaseUrl = $databaseUrl;
     }
 
-    public static function getSubscribedEvents()
+    public function getSubscribedEvents()
     {
         return [ 'preFlush' ];
     }
