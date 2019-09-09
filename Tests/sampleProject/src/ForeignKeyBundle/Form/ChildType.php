@@ -13,7 +13,7 @@ class ChildType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fish', EntityType::class, [
+        $builder->add('parent', EntityType::class, [
             'class' => ParentEntity::class,
             'choice_value' => function(ParentEntity $entity = null){
                 return $entity ? $entity->getId() : '';

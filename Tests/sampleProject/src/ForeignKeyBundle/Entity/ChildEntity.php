@@ -22,7 +22,7 @@ class ChildEntity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Parent", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="ParentEntity", inversedBy="children")
      */
     private $parent;
 
