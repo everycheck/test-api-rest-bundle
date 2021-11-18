@@ -18,7 +18,7 @@ trait ApiCallTestTrait
 		$data_test = $dataTest->data;
 		$this->extractValueFromEnvIfNeeded($data_test);
 
-		if(empty($data_test['mail']) == false || empty($data_test['pcre_mail']) == false )
+		if(empty($data_test['mail']) == false || empty($data_test['pcre_mail']) == false || !empty($data_test['mail_recipients']))
 		{
 			$this->enableMailCatching();
 		}
@@ -62,6 +62,11 @@ trait ApiCallTestTrait
 		{
 			$this->collectEmailAndTestContent(0,$data_test['pcre_mail']);
 		}
+
+        if(empty($data_test['mail_recipients']) == false )
+        {
+            $this->collectEmailRecipients($data_test['mail_recipients']);
+        }
 	}
 
 	private function getCookieFromHeaders(array $headers): array
