@@ -31,7 +31,7 @@ class EmailController extends Controller
 
         for($i = 0; $i < $data["nbSend"]; $i++)
         {
-            $this->get('email.send_email')->sendEmail();
+            $this->get('email.send_email')->sendEmail(['recipient1@domain.io'], ['recipient2@domain.io'], ['recipient3@domain.io']);
         }
 
         return new Response($data['nbSend']." emails have been sent", 201, ['Content-Type'=>"application/json"]);
