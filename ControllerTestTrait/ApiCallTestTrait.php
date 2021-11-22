@@ -18,7 +18,14 @@ trait ApiCallTestTrait
 		$data_test = $dataTest->data;
 		$this->extractValueFromEnvIfNeeded($data_test);
 
-		if(empty($data_test['mail']) == false || empty($data_test['pcre_mail']) == false || !empty($data_test['mail_recipients']))
+		if(
+		    empty($data_test['mail']) == false
+            || empty($data_test['pcre_mail']) == false
+            || !empty($data_test['mail_recipients'])
+		    || !empty($data_test['mail_to'])
+            || !empty($data_test['mail_cc'])
+            || !empty($data_test['mail_bcc'])
+        )
 		{
 			$this->enableMailCatching();
 		}
