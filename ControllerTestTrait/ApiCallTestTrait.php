@@ -72,22 +72,22 @@ trait ApiCallTestTrait
 
         if(empty($data_test['mail_recipients']) == false )
         {
-            $this->collectEmailRecipients(explode(',',preg_replace('/\s+/', '', $data_test['mail_recipients'])));
+            $this->collectEmailRecipients($data_test['mail_recipients']);
         }
 
         if(empty($data_test['mail_to']) == false )
         {
-            $this->collectEmailTo(explode(',',preg_replace('/\s+/', '', $data_test['mail_to'])));
+            $this->collectEmailTo($data_test['mail_to']);
         }
 
         if(empty($data_test['mail_cc']) == false )
         {
-            $this->collectEmailCc(explode(',',preg_replace('/\s+/', '', $data_test['mail_cc'])));
+            $this->collectEmailCc($data_test['mail_cc']);
         }
 
         if(empty($data_test['mail_bcc']) == false )
         {
-            $this->collectEmailBcc(explode(',',preg_replace('/\s+/', '', $data_test['mail_bcc'])));
+            $this->collectEmailBcc($data_test['mail_bcc']);
         }
 	}
 

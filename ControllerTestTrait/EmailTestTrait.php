@@ -29,24 +29,41 @@ trait EmailTestTrait
         $this->assertEquals($count, $mailCollector->getMessageCount(),"failed to expecting $count mails got ". $mailCollector->getMessageCount());
     }
 
-    protected function collectEmailRecipients(array $expectedRecipients)
+    protected function collectEmailRecipients(string $expectedRecipients)
     {
-        $this->checkEmailRecipients($expectedRecipients);
+        $this->checkEmailRecipients(
+            $this->explodeEmails($expectedRecipients)
+        );
     }
 
-    protected function collectEmailTo(array $expectedTo)
+    protected function collectEmailTo(string $expectedTo)
     {
-        $this->checkEmailRecipients($expectedTo,true, false, false);
+        $this->checkEmailRecipients(
+            $this->explodeEmails($expectedTo),
+            true,
+            false,
+            false
+        );
     }
 
-    protected function collectEmailCc(array $expectedCc)
+    protected function collectEmailCc(string $expectedCc)
     {
-        $this->checkEmailRecipients($expectedCc,false, true, false);
+        $this->checkEmailRecipients(
+            $this->explodeEmails($expectedCc),
+            false,
+            true,
+            false
+        );
     }
 
-    protected function collectEmailBcc(array $expectedBcc)
+    protected function collectEmailBcc(string $expectedBcc)
     {
-        $this->checkEmailRecipients($expectedBcc,false, false, true);
+        $this->checkEmailRecipients(
+            $this->explodeEmails($expectedBcc),
+            false,
+            false,
+            true
+        );
     }
 
     protected function checkEmailRecipients(array $expectedRecipients, $checkTo = true, $checkCc = true, $checkBcc = true){
@@ -70,5 +87,17 @@ trait EmailTestTrait
     protected function getMailCollector():MessageDataCollector
     {
         return $this->client->getProfile()->getCollector('swiftmailer');
+    }
+
+    protected function explodeEmails($emailsString):array
+    {
+        return explode(
+            ',',
+            preg_replace(
+                '/\s+/',
+                '',
+                $emailsString
+            )
+        );
     }
 }
