@@ -10,5 +10,5 @@ parameters:
 
 
     mailer_transport: null
-    mailer_user: null
+    mailer_user: sender@domain.com
     mailer_password: null

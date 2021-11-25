@@ -77,7 +77,11 @@ class ResourcesFileLoader
             'content_type_in'   => self::getValueOrDefault( $array,['ct_in']  , self::JSON_HEADER) , 
             'content_type_out'  => self::getValueOrDefault( $array,['ct_out'] , self::JSON_HEADER) , 
             'mail'              => self::getValueOrDefault( $array,['mail']) , 
-            'pcre_mail'         => self::getValueOrDefault( $array,['pcre_mail']) , 
+            'pcre_mail'         => self::getValueOrDefault( $array,['pcre_mail']) ,
+            'mail_recipients'   => self::getValueOrDefault( $array,['mail_recipients']) ,
+            'mail_to'   => self::getValueOrDefault( $array,['mail_to']) ,
+            'mail_cc'   => self::getValueOrDefault( $array,['mail_cc']) ,
+            'mail_bcc'   => self::getValueOrDefault( $array,['mail_bcc']) ,
         ];
     }
 

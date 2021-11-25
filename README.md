@@ -97,12 +97,12 @@ composer install
 ./Tests/sampleProject/app/console d:d:d --force
 ./Tests/sampleProject/app/console d:d:c
 ./Tests/sampleProject/app/console d:s:c
-./Tests/sampleProject/app/console s:start --docroot=./Tests/sampleProject/tests/public
+./Tests/sampleProject/app/console s:start --docroot=./Tests/sampleProject/public
 
-php ./Tests/sampleProject/tests/DemoBundle/DataFixtures/LoadDemoFixtures.php localhost:portYouAreListening [debug]
-php ./Tests/sampleProject/tests/PatternBundle/DataFixtures/LoadPatternFixtures.php localhost:portYouAreListening [debug]
+php ./Tests/sampleProject/tests/DemoBundle/DataFixtures/LoadDemoFixture.php localhost:portYouAreListening "[debug]"
+php ./Tests/sampleProject/tests/PatternBundle/DataFixtures/LoadPatternFixture.php localhost:portYouAreListening "[debug]"
 
-./Tests/sampleProject/tests/app/console s:stop
+./Tests/sampleProject/app/console s:stop
 
 ./vendor/bin/phpunit
 ```
