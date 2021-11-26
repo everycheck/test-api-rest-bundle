@@ -12,14 +12,13 @@ class EmailSender
         $this->contactEmail = $contactEmail;
     }
 
-    public function sendEmail(array $to,array $cc = [],array $bcc =[])
+    public function sendEmail()
     {
-        $message = new \Swift_Message("Hello world");
-        $message->setFrom($this->contactEmail)
-                ->setTo($to)
-                ->setCc($cc)
-                ->setBcc($bcc)
-                ->setBody("Lorem Ipsum");
+        $message = \Swift_Message::newInstance()
+            ->setSubject("Hello world")
+            ->setFrom($this->contactEmail)
+            ->setTo($this->contactEmail)
+            ->setBody("Lorem Ipsum");
 
         $this->mailer->send($message);
     }

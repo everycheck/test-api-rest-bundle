@@ -5,7 +5,8 @@ namespace EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Contro
 use EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Entity\Demo;
 use EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Form\DemoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -22,7 +23,8 @@ class DemoController extends Controller
     /**
      * Lists all demo entities.
      *
-     * @Route("", name="demo_index", methods={"GET"})
+     * @Route("", name="demo_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -42,7 +44,8 @@ class DemoController extends Controller
     /**
      * Creates a new demo entity.
      *
-     * @Route("/new", name="demo_new", methods={"POST"})
+     * @Route("/new", name="demo_new")
+     * @Method({"POST"})
      */
     public function newAction(Request $request)
     {
@@ -57,6 +60,7 @@ class DemoController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
+
         $em->persist($demo);
         $em->flush();
 
@@ -68,32 +72,17 @@ class DemoController extends Controller
         return new Response($response, 201, ['Content-Type'=>"application/json"]);
     }
 
-
-    /**
-     * Creates a new demo entity via multipart form.
-     *
-     * @Route("/multipart", name="demo_multipart", methods={"POST"})
-     */
-    public function multipartAction(Request $request)
-    {
-        $encoders = array( new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $response = $serializer->serialize($request->request->all(), 'json');
-        return new Response($response, 201, ['Content-Type'=>"application/json"]);
-    }
-
     /**
      * Deletes a demo entity.
      *
-     * @Route("/{id}", name="demo_delete", methods={"DELETE"})
+     * @Route("/{id}", name="demo_delete")
+     * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $demo = $em->getRepository(Demo::class)->find($id);
+        $demo = $em->getRepository(Demo::class)->find($request->get('id'));
 
 
         if(empty($demo))
@@ -105,17 +94,6 @@ class DemoController extends Controller
         $em->flush();
         return new Response('', 204, ['Content-Type'=>"application/json"]);
     }
-
-	/**
-	 * Returns the cookies send in the request.
-	 *
-	 * @Route("/cookies", name="get_cookies", methods={"GET"})
-	 */
-	public function getCookiesAction(Request $request)
-	{
-		$cookies = $request->cookies->all();
-		return new Response(json_encode($cookies), 200, ['Content-Type'=>"application/json"]);
-	}
 
     private function notFound()
     {

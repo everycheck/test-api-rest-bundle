@@ -41,7 +41,18 @@ All you need to have is a `database_url` set in your doctrine configuration.
 
 &#9888; ___Only mysql and sqlite mode are supported by TestApiRestBundle.___
 
-Before launching the tests, you must prepare your database. To do so, you can use the bundle `doctrine/doctrine-fixtures-bundle` to help you generate a test database. Then, dump it in the `var/data/db_test/` diretory of your project.
+Before launching the tests, you must prepare the database by using `bin/console test:database:prepare fixturesname`. For each fixtures file your application contains, it will apply the following .:
+
+```bash
+bin/console d:d:d --force
+bin/console d:d:c 
+bin/console d:s:c 
+bin/console d:s:u --no-interaction          #If doctrine migration isn't available
+bin/console d:m:m --no-interaction
+bin/console d:f:l --append
+```
+
+In short, it creates a database files, in .sql and by dumping it in mysql mode or in .sqlite otherwise, per fixtures. Those files are used between each tests to reset the database state. Hence, all the tests are independent and it takes way less time to process.
 
 &#9888; *Be aware that in mysql mode the tests are more rigorous as it takes into account the relations constraints. But they are much slower to process than in sqlite mode due to the resetting method.*
 
@@ -169,9 +180,6 @@ A unit test is then defined by an array with keys to . Here's the list of all th
 | mail      | the expected number of email sent at the end of the request |                  |
 | pcre_mail | assert the presence of a value in an sent email via RegExp  |                  |
 
-
-If you want to know more about the `ct_in` available, you can [read this](Resources/doc/CTIN_AVAILABLE.md).
-
 So, if you want to test that your app send a 404 html code when you try to delete a non-found resource, you'd write the following test :
 
 ```yaml
@@ -192,7 +200,7 @@ unit_tests:
 As you can see, the `in` and `out` keys doesn't contain actual data, but the name of a json file. That's where you write the body of a request or of a response, for readability matters. So let's create them.
 
 
-The `in` refers to the actual body content of the request you would send to your endpoint. The `out` corresponds to the response you should get from that request. By defaut, those files are stored in the `tests\Payloads` and the `tests\Responses\Expected`folder. By editing your `conf.yaml` you can change that default folder. You can also modify it for a particular test : 
+The in refers to the actual body content of the request you would send to your endpoint. The out corresponds to the response you should get from that request. By defaut, those files are stored in the `tests\Payloads` and the `tests\Responses\Expected`folder. By editing your `conf.yaml` you can change that default folder. You can also modify it for a particular test : 
 
 ```yaml
 unit_tests:
@@ -223,14 +231,6 @@ unit_tests:
     - { url: "/demo/a"  , status: 404 }
     - { url: "/demo/1"  , status: 204 }
 ```
-
-*In the case you need to send cookies in your test request, use the `header` keyword with the following pattern :*
-
-```yaml
-GET:
-    - { url: "/demo/cookies"  , status: 200, out: "sentCookies", headers: "Cookie : cookiename=cookievalue"}
-```
-
 
 #### Scenario testing
 

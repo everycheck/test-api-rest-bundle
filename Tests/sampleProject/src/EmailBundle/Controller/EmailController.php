@@ -2,7 +2,8 @@
 namespace EveryCheck\TestApiRestBundle\Tests\sampleProject\src\EmailBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,8 @@ class EmailController extends Controller
     /**
      * Sends an email.
      *
-     * @Route("", name="email_sends", methods={"POST"})
+     * @Route("", name="email_sends")
+     * @Method({"POST"})
      */
     public function emailAction(Request $request)
     {
@@ -31,7 +33,7 @@ class EmailController extends Controller
 
         for($i = 0; $i < $data["nbSend"]; $i++)
         {
-            $this->get('email.send_email')->sendEmail(['recipient1@domain.io'], ['recipient2@domain.io'], ['recipient3@domain.io']);
+            $this->container->get('email.send_email')->sendEmail();
         }
 
         return new Response($data['nbSend']." emails have been sent", 201, ['Content-Type'=>"application/json"]);

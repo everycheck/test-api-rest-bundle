@@ -89,20 +89,9 @@ To test one of your bundle, you just have to replicate the structure of that one
 
 ## Launching test 
 
-Here are the commands to execute in order to test the bundle : 
+To test the bundle type : 
 
 ```
 composer install
-
-./Tests/sampleProject/app/console d:d:d --force
-./Tests/sampleProject/app/console d:d:c
-./Tests/sampleProject/app/console d:s:c
-./Tests/sampleProject/app/console s:start --docroot=./Tests/sampleProject/public
-
-php ./Tests/sampleProject/tests/DemoBundle/DataFixtures/LoadDemoFixture.php localhost:portYouAreListening "[debug]"
-php ./Tests/sampleProject/tests/PatternBundle/DataFixtures/LoadPatternFixture.php localhost:portYouAreListening "[debug]"
-
-./Tests/sampleProject/app/console s:stop
-
 ./vendor/bin/phpunit
 ```

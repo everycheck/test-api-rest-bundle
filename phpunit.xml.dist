@@ -7,11 +7,12 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
+         syntaxCheck="false"
          colors="true"
          bootstrap="Tests/bootstrap.php"
 >
     <php>
-        <server name="KERNEL_CLASS" value="AppKernel"/>
+        <server name="KERNEL_DIR" value="./Tests/sampleProject/app/"/>
     </php>
 
     <testsuites>

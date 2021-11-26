@@ -3,9 +3,3 @@ unit_tests:
     - { url: "/email", status: 201, in: "sendNoEmail"       , mail: 0}
     - { url: "/email", status: 201, in: "sendOneEmail"      , mail: 1, pcre_mail: '/Lorem Ipsum/'  }
     - { url: "/email", status: 201, in: "sendMultipleEmails", mail: 3 }
-    - { url: "/email", status: 201, in: "sendOneEmail"      , mail: 1, mail_recipients: 'recipient2@domain.io,recipient1@domain.io,recipient3@domain.io'  }
-    - { url: "/email", status: 201, in: "sendOneEmail"    , mail: 1, mail_recipients: 'recipient1@domain.io,recipient2@domain.io,recipient3@domain.io' }
-    - { url: "/email", status: 201, in: "sendOneEmail"    , mail: 1, mail_to: 'recipient1@domain.io' }
-    - { url: "/email", status: 201, in: "sendOneEmail"    , mail: 1, mail_cc: 'recipient2@domain.io' }
-    - { url: "/email", status: 201, in: "sendOneEmail"    , mail: 1, mail_bcc: 'recipient3@domain.io' }
-
