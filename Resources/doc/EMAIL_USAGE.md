@@ -24,3 +24,36 @@ scenario:
       - { action: "POST", url: "/email"       , status: 201, in: "sendOneEmail"      , mail: 1, pcre_mail: '/user id: (.+) name: (.+)/'  }
       - { action: "GET" , url: "/user/#pcre1#/#pcre2#", status: 200}
 ```
+
+## Test email recipients
+
+There are four ways to verify email recipients:
+
+All recipients:
+
+```yaml
+    - { url: "/email", status: 201, in: "sendOneEmail", mail_recipients: "someone@domain.com;someone-else@domain.com"  }
+```
+
+Only "To" recipients:
+
+```yaml
+    - { url: "/email", status: 201, in: "sendOneEmail", mail_to: "to-someone@domain.com;to-someone-else@domain.com"  }
+```
+
+Only "Cc" recipients:
+
+```yaml
+    - { url: "/email", status: 201, in: "sendOneEmail", mail_cc: "copy-to-someone@domain.com;copy-to-someone-else@domain.com"  }
+```
+
+Only "Bcc" recipients:
+
+```yaml
+    - { url: "/email", status: 201, in: "sendOneEmail", mail_bcc: "blind-copy-to-someone@domain.com;blind-copy-to-someone-else@domain.com"  }
+```
+
+You can combine them in your test:
+```yaml
+    - { url: "/email", status: 201, in: "sendOneEmail", mail_to: "to-someone@domain.com", mail_bcc: "blind-copy-to-someone-else@domain.com"  }
+```
