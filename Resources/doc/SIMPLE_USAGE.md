@@ -168,7 +168,10 @@ A unit test is then defined by an array with keys to . Here's the list of all th
 | ct_out    | specify the content-type of the response                    | application/json |
 | mail      | the expected number of email sent at the end of the request |                  |
 | pcre_mail | assert the presence of a value in an sent email via RegExp  |                  |
-
+| mail_recipients | check if the email is sent to all specified recipients no matter how it is sent( "to" & "cc" & "bcc" ) |                  |
+| mail_to   | check if the email is sent to all recipients (check only "to" value of the email) |                  |
+| mail_cc   | check if the email **C**arbon **C**opy is sent to all recipients (check only "cc" value of the email) |                  |
+| mail_bcc  | check if the email **B**lind **C**arbon **C**opy is sent to all recipients (check only "bcc" value of the email) |                  |
 
 If you want to know more about the `ct_in` available, you can [read this](Resources/doc/CTIN_AVAILABLE.md).
 
@@ -282,6 +285,10 @@ You can use all the keys of the unit tests, plus another one : the `action`.
 | ct_out    | specify the content-type of the response                    | application/json |
 | mail      | the expected number of email sent at the end of the request |                  |
 | pcre_mail | assert the presence of a value in an sent email via RegExp  |                  |
+| mail_recipients | check if the email is sent to all specified recipients no matter how it is sent( "to" & "cc" & "bcc" ) |                  |
+| mail_to   | check if the email is sent to all recipients (check only "to" value of the email) |                  |
+| mail_cc   | check if the email **C**arbon **C**opy is sent to all recipients (check only "cc" value of the email) |                  |
+| mail_bcc  | check if the email **B**lind **C**arbon **C**opy is sent to all recipients (check only "bcc" value of the email) |                  |
 
 Its purpose is the specify which method must be used by the request. And speaking of methods, scenario testing also support GET, POST, PATCH, PUT and DELETE and a new one called DB. This one is used to ensure that our app acts well even in the database :
 
