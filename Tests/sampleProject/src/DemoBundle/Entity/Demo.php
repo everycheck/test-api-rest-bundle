@@ -3,6 +3,7 @@
 namespace EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Demo
@@ -35,6 +36,21 @@ class Demo
      */
     private $value;
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="value2", type="string", length=255)
+	 * @JMS\Groups({"a_random_group"})
+	 */
+	private $value2;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="value3", type="string", length=255)
+	 * @JMS\Groups({"unit_testing"})
+	 */
+	private $value3;
 
     /**
      * Get id.
@@ -93,4 +109,36 @@ class Demo
     {
         return $this->value;
     }
+
+	/**
+	 * @return string
+	 */
+	public function getValue2()
+	{
+		return $this->value2;
+	}
+
+	/**
+	 * @param string $value2
+	 */
+	public function setValue2($value2)
+	{
+		$this->value2 = $value2;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getValue3()
+	{
+		return $this->value3;
+	}
+
+	/**
+	 * @param string $value3
+	 */
+	public function setValue3($value3)
+	{
+		$this->value3 = $value3;
+	}
 }

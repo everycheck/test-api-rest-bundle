@@ -1,4 +1,6 @@
 {
   "name" : "posted",
-  "value": 418
+  "value": 418,
+  "value2" : "an exclude value not tested with DB action",
+  "value3" : "an exclude value tested with DB action"
 }

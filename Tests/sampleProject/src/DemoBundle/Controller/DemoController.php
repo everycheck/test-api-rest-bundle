@@ -4,6 +4,7 @@ namespace EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Contro
 
 use EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Entity\Demo;
 use EveryCheck\TestApiRestBundle\Tests\sampleProject\src\DemoBundle\Form\DemoType;
+use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,14 +28,10 @@ class DemoController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $encoders = array(new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
         $demos = $em->getRepository(Demo::class)->findAll();
 
-
-        $response = $serializer->serialize($demos, 'json');
+		$serializer = $this->get('jms_serializer');
+		$response = $serializer->serialize($demos, 'json', SerializationContext::create()->setGroups(array('Default')));
 
         return new Response($response, 200, ['Content-Type'=>"application/json"]);
     }
@@ -60,11 +57,9 @@ class DemoController extends Controller
         $em->persist($demo);
         $em->flush();
 
-        $encoders = array( new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
+		$serializer = $this->get('jms_serializer');
 
-        $response = $serializer->serialize($demo, 'json');
+        $response = $serializer->serialize($demo, 'json', SerializationContext::create()->setGroups(array('Default')));
         return new Response($response, 201, ['Content-Type'=>"application/json"]);
     }
 
@@ -76,11 +71,8 @@ class DemoController extends Controller
      */
     public function multipartAction(Request $request)
     {
-        $encoders = array( new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $response = $serializer->serialize($request->request->all(), 'json');
+		$serializer = $this->get('jms_serializer');
+        $response = $serializer->serialize($request->request->all(), 'json', SerializationContext::create()->setGroups(array('Default')));
         return new Response($response, 201, ['Content-Type'=>"application/json"]);
     }
 

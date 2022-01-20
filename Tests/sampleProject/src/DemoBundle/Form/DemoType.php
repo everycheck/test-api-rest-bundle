@@ -13,7 +13,9 @@ class DemoType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('value');
+            ->add('value')
+			->add('value2')
+			->add('value3');
     }
 
     public function configureOptions(OptionsResolver $resolver)

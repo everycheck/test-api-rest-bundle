@@ -299,4 +299,4 @@ scenario:
     - { action: "DB", url: "TestApiRestBundle:Demo?id=3", out: "dbTesting" }
 ```
 
-The url here is quite different. It is defined by the entity you want to check, then a `?` and the property to check. In the example above, the scenario is checking that after a POST, there is in the database a Demo with 3 as its id.
+The url here is quite different. It is defined by the entity you want to check, then a `?` and the property to check. In the example above, the scenario is checking that after a POST, there is in the database a Demo with 3 as its id. If you want to check a field and not publish it on your API use the 'unit_testing' serialisation group.
