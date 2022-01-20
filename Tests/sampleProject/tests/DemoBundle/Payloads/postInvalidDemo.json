@@ -1,4 +1,6 @@
 {
   "name" : "invalid",
-  "value": "I am not an integer"
+  "value": "I am not an integer",
+  "value2" : "an exclude value not tested with DB action",
+  "value3" : "an exclude value tested with DB action"
 }

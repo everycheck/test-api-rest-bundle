@@ -34,12 +34,16 @@ class LoadDemoFixture
         $demos = [];
         $demo1 = [
             "name" => "foo",
-            "value" => 300
+            "value" => 300,
+			"value2" => "an exclude value not tested with DB action",
+			"value3" => "an exclude value tested with DB action"
         ];
 
         $demo2 = [
             "name" => "the answer",
-            "value" => 42
+            "value" => 42,
+			"value2" => "an exclude value not tested with DB action",
+			"value3" => "an exclude value tested with DB action"
         ];
 
         $demo1 = $this->demoApi->postDemo($demo1);
