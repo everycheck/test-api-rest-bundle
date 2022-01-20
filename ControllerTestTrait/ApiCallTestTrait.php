@@ -19,12 +19,12 @@ trait ApiCallTestTrait
 		$this->extractValueFromEnvIfNeeded($data_test);
 
 		if(
-		    empty($data_test['mail']) == false
-            || empty($data_test['pcre_mail']) == false
-            || !empty($data_test['mail_recipients'])
-		    || !empty($data_test['mail_to'])
-            || !empty($data_test['mail_cc'])
-            || !empty($data_test['mail_bcc'])
+		    isset($data_test['mail'])
+            || isset($data_test['pcre_mail'])
+            || isset($data_test['mail_recipients'])
+		    || isset($data_test['mail_to'])
+            || isset($data_test['mail_cc'])
+            || isset($data_test['mail_bcc'])
         )
 		{
 			$this->enableMailCatching();
@@ -60,32 +60,32 @@ trait ApiCallTestTrait
 		$this->assertResponseCode($this->client->getResponse(), $data_test['status']);
 		$this->assertResponse($this->client->getResponse(), $data_test['out'],$data_test['content_type_out']);
 
-		if(empty($data_test['mail']) == false )
+		if(isset($data_test['mail']))
 		{
 			$this->assertMailSendedCount($data_test['mail']);
 		}
 
-		if(empty($data_test['pcre_mail']) == false )
+		if(isset($data_test['pcre_mail']))
 		{
 			$this->collectEmailAndTestContent(0,$data_test['pcre_mail']);
 		}
 
-        if(empty($data_test['mail_recipients']) == false )
+        if(isset($data_test['mail_recipients']))
         {
             $this->collectEmailRecipients($data_test['mail_recipients']);
         }
 
-        if(empty($data_test['mail_to']) == false )
+        if(isset($data_test['mail_to']))
         {
             $this->collectEmailTo($data_test['mail_to']);
         }
 
-        if(empty($data_test['mail_cc']) == false )
+        if(isset($data_test['mail_cc']))
         {
             $this->collectEmailCc($data_test['mail_cc']);
         }
 
-        if(empty($data_test['mail_bcc']) == false )
+        if(isset($data_test['mail_bcc']))
         {
             $this->collectEmailBcc($data_test['mail_bcc']);
         }
