@@ -4,6 +4,7 @@ namespace EveryCheck\TestApiRestBundle\ControllerTestTrait;
 use EveryCheck\TestApiRestBundle\Entity\TestDataChunk;
 use EveryCheck\TestApiRestBundle\Matcher\Matcher;
 use EveryCheck\TestApiRestBundle\Service\JsonFileComparator;
+use JMS\Serializer\SerializationContext;
 
 trait DatabaseTestTrait
 {
@@ -37,7 +38,7 @@ trait DatabaseTestTrait
 
         $jsonContent = static::$kernel->getContainer()
             ->get('jms_serializer')
-            ->serialize($entities, "json");
+            ->serialize($entities, "json", SerializationContext::create()->setGroups(array('Default','unit_testing')));
 
         $calledClass = get_called_class();
         $calledClassFolder = dirname((new \ReflectionClass($calledClass))->getFileName());

@@ -26,13 +26,9 @@ class ChildController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $encoders = array(new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
         $children = $em->getRepository(ChildEntity::class)->findAll();
 
-
+		$serializer = $this->get('jms_serializer');
         $response = $serializer->serialize($children, 'json');
 
         return new Response($response, 200, ['Content-Type'=>"application/json"]);
@@ -59,10 +55,7 @@ class ChildController extends Controller
         $em->persist($child);
         $em->flush();
 
-        $encoders = array( new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
+		$serializer = $this->get('jms_serializer');
         $response = $serializer->serialize($child, 'json');
         return new Response($response, 201, ['Content-Type'=>"application/json"]);
     }

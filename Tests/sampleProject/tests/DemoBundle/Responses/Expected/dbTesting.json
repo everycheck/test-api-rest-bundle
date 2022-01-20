@@ -2,6 +2,7 @@
   {
     "id": 3,
     "name" : "posted",
-    "value": 418
+    "value": 418,
+    "value3" : "an exclude value tested with DB action"
   }
 ]
